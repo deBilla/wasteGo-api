@@ -22,8 +22,20 @@ func CreateWasteItem(c *gin.Context) {
 		return
 	}
 
-	customer := models.WasteItem{ID: input.ID, Name: input.Name, Type: input.Type}
+	customer := models.WasteItem{ID: input.ID, Name: input.Name, Type: input.Type, Quantity: input.Quantity}
 	configs.DB.Create(&customer)
 
 	c.JSON(http.StatusOK, gin.H{"data": customer})
+}
+
+func DeleteWasteItem(c *gin.Context) {
+	var wasteItem models.WasteItem
+	if err := configs.DB.Where("id = ?", c.Param("id")).First(&wasteItem).Error; err != nil {
+		c.JSON(http.StatusBadRequest, gin.H{"error": "Record not found!"})
+		return
+	}
+
+	configs.DB.Delete(&wasteItem)
+
+	c.JSON(http.StatusOK, gin.H{"data": true})
 }
