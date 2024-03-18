@@ -36,7 +36,7 @@ func main() {
 	router.POST("/wasteItem/uploadImage", uploadImage)
 	router.POST("/wasteItem/upload-image-s3", uploadImageS3)
 
-	router.Run("localhost:8080")
+	router.Run(":80")
 }
 
 func uploadImageS3(c *gin.Context) {
