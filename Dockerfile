@@ -26,7 +26,7 @@ WORKDIR /app
 COPY --from=builder /app/wasteGo .
 
 # Expose the port the application listens on
-EXPOSE 8080
+EXPOSE 8000
 
 # Command to run the executable
 CMD ["./wasteGo"]
