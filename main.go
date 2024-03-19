@@ -28,7 +28,7 @@ func main() {
 
 	configs.ConnectDatabase()
 
-	router.GET("/wasteItems", controllers.GetWasteItems)
+	router.GET("/wasteItems/:userId", controllers.GetWasteItems)
 	router.POST("/wasteItem", controllers.CreateWasteItem)
 	router.DELETE("/wasteItem/:id", controllers.DeleteWasteItem)
 	router.POST("/wasteItem/uploadImage", uploadImageS3)
