@@ -22,10 +22,10 @@ func CreateWasteItem(c *gin.Context) {
 		return
 	}
 
-	customer := models.WasteItem{Name: input.Name, Type: input.Type, Quantity: input.Quantity}
-	configs.DB.Create(&customer)
+	wasteItem := models.WasteItem{Name: input.Name, Type: input.Type, Quantity: input.Quantity, UserID: input.UserID}
+	configs.DB.Create(&wasteItem)
 
-	c.JSON(http.StatusOK, gin.H{"data": customer})
+	c.JSON(http.StatusOK, gin.H{"data": wasteItem})
 }
 
 func DeleteWasteItem(c *gin.Context) {
