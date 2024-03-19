@@ -10,7 +10,7 @@ import (
 
 func GetWasteItems(c *gin.Context) {
 	var wasteItems []models.WasteItem
-	if err := configs.DB.Where("user_id = ?", c.Param("userId")).First(&wasteItems).Error; err != nil {
+	if err := configs.DB.Where("user_id = ?", c.Param("userId")).Find(&wasteItems).Error; err != nil {
 		c.JSON(http.StatusBadRequest, gin.H{"error": "Record not found!"})
 		return
 	}
