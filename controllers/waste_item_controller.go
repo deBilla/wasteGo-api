@@ -25,7 +25,7 @@ func CreateWasteItem(c *gin.Context) {
 		return
 	}
 
-	wasteItem := models.WasteItem{Name: input.Name, Type: input.Type, Quantity: input.Quantity, UserID: input.UserID}
+	wasteItem := models.WasteItem{Name: input.Name, Type: input.Type, Quantity: input.Quantity, UserID: input.UserID, ImgURL: input.ImgURL}
 	configs.DB.Create(&wasteItem)
 
 	c.JSON(http.StatusOK, gin.H{"data": wasteItem})
